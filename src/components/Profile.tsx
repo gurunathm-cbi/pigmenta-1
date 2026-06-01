@@ -184,13 +184,7 @@ const Profile = () => {
                 </>
               )}
             </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleFileChange}
-            />
+           
 
             <input
               type="text"

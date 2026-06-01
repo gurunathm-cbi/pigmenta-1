@@ -1,21 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+// Navbar is imported here — it shows on EVERY page automatically.
+// We'll create this file in the next step.
 import Navbar from "@/components/Navbar";
-// next/font/google downloads fonts at BUILD TIME and self-hosts them.
-// Zero layout shift, no external requests to Google at runtime.
-import { Inter, Fraunces } from "next/font/google";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Pigmenta",
@@ -36,12 +23,7 @@ export default function RootLayout({
         loads. This causes a harmless React hydration warning — suppressing it
         here is the standard Next.js fix.
       */}
-      {/*
-        We inject both font CSS variables as class names on <body>.
-        This makes --font-cormorant and --font-dm-sans available
-        to every component in the app via CSS variables.
-      */}
-      <body suppressHydrationWarning className={`${inter.variable} ${fraunces.variable}`}>
+      <body suppressHydrationWarning>
         {/*
           This <div> matches the structure you had in App.tsx:
             <div className="relative">

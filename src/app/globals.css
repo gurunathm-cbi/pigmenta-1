@@ -1,56 +1,41 @@
 @import "tailwindcss";
 
+/*
+  @theme registers font names with Tailwind so it generates utility classes:
+    font-display  →  Cormorant Garamond  (headings, logo, editorial)
+    font-sans     →  DM Sans             (body text, labels, nav)
+
+  Next.js self-hosts these exact font files via next/font/google,
+  so the browser always uses the downloaded version — no Google requests at runtime.
+*/
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, Cambria, "Times New Roman",
-    Times, serif;
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, Cambria, "Times New Roman",
-    Times, serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans:    "DM Sans", sans-serif;
 }
 
-html,
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans), sans-serif;
+  background: #F6F4F1;
+  color: #1a1a1a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
-@utility no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-.hero-section {
-  height: 80dvh;
-}
-
-@media (min-width: 768px) {
-  .hero-section {
-    height: 88dvh;
-  }
-}
-
-html {
-  scrollbar-gutter: stable;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.font-display {
-  font-family: var(--font-display);
-  letter-spacing: -0.01em;
-}
-
+/*
+  herotitle — the large artistic heading on the hero section.
+  Cormorant Garamond at light weight with generous tracking
+  gives it that calm, gallery-wall feeling.
+*/
 .herotitle {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-style: italic;
 }

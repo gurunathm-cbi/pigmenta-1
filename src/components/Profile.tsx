@@ -16,6 +16,8 @@ const Profile = () => {
   const [activeCategory, setActiveCategory] = useState<PaintingCategory>("Oil ");
   const [paintings, setPaintings] = useState(initialCategoryPaintings);
 
+  const [soldCount] = useState<number>(0); // TODO: fetch from Supabase
+
   const [showModal, setShowModal] = useState(false);
   const [modalCategory, setModalCategory] = useState<PaintingCategory>("Oil ");
   const [newTitle, setNewTitle] = useState("");
@@ -52,6 +54,7 @@ const Profile = () => {
   };
 
   const currentPaintings = paintings[activeCategory];
+  const uploadedCount = Object.values(paintings).reduce((sum, arr) => sum + arr.length, 0);
 
   return (
     <div className="pb-32 sm:pb-24">
@@ -82,6 +85,20 @@ const Profile = () => {
                 rounded-full bg-gray-400 border-4 border-white shadow-xl z-10
               "
             />
+          </div>
+        </div>
+      </div>
+
+      {/* ARTWORK STATS */}
+      <div className="max-w-7xl mx-auto px-6 pt-6 pb-2">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 px-5 py-5 flex flex-col items-center gap-1">
+            <span className="text-3xl font-bold text-gray-900">{uploadedCount}</span>
+            <span className="text-xs text-gray-500 font-medium tracking-wide uppercase">Uploaded Artworks</span>
+          </div>
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 px-5 py-5 flex flex-col items-center gap-1">
+            <span className="text-3xl font-bold text-gray-900">{soldCount}</span>
+            <span className="text-xs text-gray-500 font-medium tracking-wide uppercase">Sold Artworks</span>
           </div>
         </div>
       </div>

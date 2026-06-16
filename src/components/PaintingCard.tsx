@@ -36,7 +36,7 @@ const PaintingCard = ({
         </p>
 
         {/* Artist Section */}
-        <div className="mt-4 flex items-center gap-3">
+        <div className="mt-4 flex items-center gap-3 bg-amber-800">
           <img
             src={artistPhoto}
             alt={artistName}
